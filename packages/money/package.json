@@ -1,6 +1,6 @@
 {
   "name": "@cryptolatam/money",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "private": false,
   "main": "lib/index.js",
