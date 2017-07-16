@@ -2,7 +2,7 @@
   "name": "@cryptolatam/error",
   "version": "0.1.1",
   "description": "",
-  "private": true,
+  "private": false,
   "main": "lib/index.js",
   "module": "src/index.js",
   "scripts": {
