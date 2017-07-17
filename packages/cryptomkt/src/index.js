@@ -1,7 +1,6 @@
 "use strict";
 
 import axios from "axios";
-import numeral from "numeral";
 import moment from "moment";
 import get from "lodash/get";
 
@@ -39,7 +38,7 @@ export default class CryptoMKT {
       const bidded = timeline.bid[i];
       return {
         date: moment(asked["candle_date"]).format(),
-        volume: numeral(asked["volume_sum"]).value(),
+        volume: parse(asked["volume_sum"], "ETH"),
         hight: {
           ask: parse(asked["hight_price"], currency),
           bid: parse(bidded["hight_price"], currency),
@@ -61,6 +60,7 @@ export default class CryptoMKT {
     const current = {
       ask: get(candle, [0, "close", "ask"], null),
       bid: get(candle, [0, "close", "bid"], null),
+      volume: get(candle, [0, "volume"], null),
     };
     return { current, candle };
   }
