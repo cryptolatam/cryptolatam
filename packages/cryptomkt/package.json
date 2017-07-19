@@ -1,6 +1,6 @@
 {
   "name": "@cryptolatam/cryptomkt",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "private": false,
   "main": "lib/index.js",
@@ -17,8 +17,8 @@
   "author": "Patricio López <lopezjuripatricio@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
-    "@cryptolatam/error": "^0.1.4",
-    "@cryptolatam/money": "^0.1.4",
+    "@cryptolatam/error": "^0.1.6",
+    "@cryptolatam/money": "^0.1.7",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
