@@ -10,11 +10,16 @@ import CryptoLATAMError from "@cryptolatam/error";
 import { parse } from "@cryptolatam/money";
 
 export default class CryptoMKT {
-  constructor() {
-    this.client = axios.create({
+  static get defaults() {
+    return {
       baseURL: "https://www.cryptomkt.com/api/",
       timeout: 3000,
-    });
+    };
+  }
+
+  constructor(options = {}) {
+    this.options = Object.assign(this.constructor.defaults, options);
+    this.client = axios.create(this.options);
   }
 
   watchCandle(interval = 1000, opts = {}) {

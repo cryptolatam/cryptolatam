@@ -7,15 +7,20 @@ import Rx from "rxjs";
 import { parse } from "@cryptolatam/money";
 
 export default class SurBTC {
-  constructor() {
-    this.client = axios.create({
+  static get defaults() {
+    return {
       baseURL: "https://www.surbtc.com/api/v2/",
       timeout: 3000,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    });
+    };
+  }
+
+  constructor(options = {}) {
+    this.options = Object.assign(this.constructor.defaults, options);
+    this.client = axios.create(this.options);
   }
 
   watchCandle(interval = 1000, opts = {}) {
