@@ -21,6 +21,18 @@ export default class FiatService {
     return currencies;
   }
 
+  static convert(data, from = [1, "USD"], to = ["USD"]) {
+    // Change to USD
+    if (from[1] !== "USD" && data[from[1]]) {
+      const [value] = data[from[1]]["rate"];
+      from = [from[0] / value, "USD"];
+    }
+    return to.map(currency => currency.toUpperCase()).map(currency => {
+      const [value, code] = data[currency]["rate"];
+      return [value * from[0], code];
+    });
+  }
+
   constructor({ apiKey, key, store } = {}, options) {
     this.apiKey = apiKey;
     this.key = key || "fiatservice:currencies";
@@ -77,17 +89,8 @@ export default class FiatService {
     return await this.store.get(this.key);
   }
 
-  async convert(from = [1, "USD"], to = ["USD"]) {
+  async convert(from, to) {
     const data = await this.get();
-
-    // Change to USD
-    if (from[1] !== "USD" && data[from[1]]) {
-      const [value] = data[from[1]]["rate"];
-      from = [from[0] / value, "USD"];
-    }
-    return to.map(currency => currency.toUpperCase()).map(currency => {
-      const [value, code] = data[currency]["rate"];
-      return [value * from[0], code];
-    });
+    return this.constructor.convert(data, from, to);
   }
 }
