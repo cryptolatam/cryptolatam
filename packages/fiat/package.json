@@ -1,6 +1,6 @@
 {
-  "name": "@cryptolatam/surbtc",
-  "version": "0.2.1",
+  "name": "@cryptolatam/fiat",
+  "version": "0.1.0",
   "description": "",
   "private": false,
   "main": "lib/index.js",
@@ -24,6 +24,7 @@
     "@cryptolatam/money": "^0.1.7",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
+    "millisecond": "^0.1.2",
     "moment": "^2.18.1",
     "numeral": "^2.0.6",
     "rxjs": "^5.4.2"
