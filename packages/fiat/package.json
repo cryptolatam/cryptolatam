@@ -1,6 +1,6 @@
 {
   "name": "@cryptolatam/fiat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "private": false,
   "main": "lib/index.js",
