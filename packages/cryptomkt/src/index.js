@@ -2,9 +2,8 @@
 
 import axios from "axios";
 import moment from "moment";
-import get from "lodash/get";
-
 import Rx from "rxjs";
+import get from "lodash/get";
 
 import CryptoLATAMError from "@cryptolatam/error";
 import { parse } from "@cryptolatam/money";
@@ -18,6 +17,7 @@ export default class CryptoMKT {
   }
 
   constructor(options = {}) {
+    this.name = "CryptoMKT";
     this.options = Object.assign(this.constructor.defaults, options);
     this.client = axios.create(this.options);
   }
@@ -67,6 +67,6 @@ export default class CryptoMKT {
       bid: get(candle, [0, "close", "bid"], null),
       volume: get(candle, [0, "volume"], null),
     };
-    return { current, candle };
+    return { name: this.name, current, candle };
   }
 }

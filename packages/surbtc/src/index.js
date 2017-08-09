@@ -1,7 +1,6 @@
 "use strict";
 
 import axios from "axios";
-
 import Rx from "rxjs";
 
 import { parse } from "@cryptolatam/money";
@@ -19,6 +18,7 @@ export default class SurBTC {
   }
 
   constructor(options = {}) {
+    this.name = "SurBTC";
     this.options = Object.assign(this.constructor.defaults, options);
     this.client = axios.create(this.options);
   }
@@ -38,6 +38,6 @@ export default class SurBTC {
       volume: parse(...ticker["volume"]),
     };
 
-    return { current };
+    return { name: this.name, current };
   }
 }
