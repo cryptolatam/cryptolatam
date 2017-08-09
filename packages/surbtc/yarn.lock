@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@cryptolatam/error@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@cryptolatam/error/-/error-0.1.6.tgz#bc98f85ba9d5ac657020d47d07241b6bb31b99d4"
+  dependencies:
+    es6-error "^4.0.2"
+
+"@cryptolatam/money@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@cryptolatam/money/-/money-0.1.7.tgz#99c559e08289d68024d000b77f4798213d3c9a05"
+  dependencies:
+    numeral "^2.0.6"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -947,6 +959,10 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
+es6-error@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/es6-error/-/es6-error-4.0.2.tgz#eec5c726eacef51b7f6b73c20db6e1b13b069c98"
+
 escape-string-regexp@^1.0.2:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -1832,6 +1848,10 @@ micromatch@^2.1.5, micromatch@^2.3.11:
     object.omit "^2.0.0"
     parse-glob "^3.0.4"
     regex-cache "^0.4.2"
+
+millisecond@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/millisecond/-/millisecond-0.1.2.tgz#6cc5ad386241cab8e78aff964f87028eec92dac5"
 
 mime-db@~1.29.0:
   version "1.29.0"

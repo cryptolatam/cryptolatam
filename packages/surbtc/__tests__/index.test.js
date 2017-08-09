@@ -1,13 +1,12 @@
 import SurBTC from "../src";
 
 describe("SurBTC", () => {
-  it("exists", async () => {
+  it("subscribes", async () => {
     expect(SurBTC).toBeTruthy();
-    const mkt = new SurBTC();
-    let candle = null;
-    candle = await mkt.getCandle("BTC", "CLP");
-    expect(candle).toBeTruthy();
-    candle = await mkt.getCandle("ETH", "CLP");
-    expect(candle).toBeTruthy();
+    const service = new SurBTC({
+      store: new Map(),
+    });
+    const data = await service.start().first().toPromise();
+    expect(data).toBeTruthy();
   });
 });
