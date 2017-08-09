@@ -17,8 +17,7 @@ describe("SurBTC", () => {
     expect(data).toBeTruthy();
     expect(data["USD"]["rate"]).toEqual([1, "USD"]);
 
-    // data = await fiatService.start("5 sec", { source: "CLP" }).first().toPromise();
-    // expect(data).toBeTruthy();
-    // expect(data["CLP"]["rate"]).toEqual([1, "CLP"]);
+    const results = await fiatService.convert([1000, "CLP"], ["USD", "BRL", "CLP"]);
+    expect(results[2]).toEqual([1000, "CLP"]);
   });
 });
