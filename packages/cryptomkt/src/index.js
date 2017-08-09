@@ -27,9 +27,9 @@ export default class CryptoMKT {
 
   async fetch(options = {}) {
     const exchanges = options.exchanges || [
+      ["ETH", "CLP"],
       ["ETH", "ARS"],
       // ["ETH", "BRL"], // August
-      ["ETH", "CLP"],
       // ["ETH", "EUR"], // September
     ];
 
