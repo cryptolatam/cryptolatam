@@ -1,3 +1,5 @@
+"use strict";
+
 import axios from "axios";
 import ms from "millisecond";
 import Rx from "rxjs";
@@ -8,33 +10,39 @@ import { parse } from "@cryptolatam/money";
 import currencies from "./data/currencies";
 
 export default class FiatService {
-  constructor({ apiKey, key, store } = {}) {
-    this.key = key || "fiatservice:currencies";
-    this.apiKey = apiKey;
-    this.store = store;
-    this.observer = null;
-    this.client = axios.create({
+  static get defaults() {
+    return {
       baseURL: "http://apilayer.net/api/",
-    });
+      timeout: 3000,
+    };
   }
 
-  async fetch(options) {
-    const params = Object.assign(
-      {
-        access_key: this.apiKey,
-        source: "USD",
-        currencies: Object.keys(currencies).join(","),
-        format: 1,
-      },
-      options
-    );
+  static get currencies() {
+    return currencies;
+  }
+
+  constructor({ apiKey, key, store } = {}, options) {
+    this.apiKey = apiKey;
+    this.key = key || "fiatservice:currencies";
+    this.store = store;
+    this.options = Object.assign(this.constructor.defaults, options);
+    this.client = axios.create(this.options);
+  }
+
+  async fetch(options = {}) {
+    const params = {
+      access_key: this.apiKey,
+      source: options.from || "USD",
+      currencies: Object.keys(options.to || currencies).join(","),
+      format: 1,
+    };
     const { data } = await this.client.get("/live", {
       params,
     });
     return data;
   }
 
-  observe(interval, options) {
+  observe(interval, options = {}) {
     return Rx.Observable
       .interval(interval)
       .startWith(0)

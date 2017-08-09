@@ -1,10 +1,12 @@
 import CryptoMKT from "../src";
 
 describe("CryptoMKT", () => {
-  it("exists", async () => {
+  it("subscribes", async () => {
     expect(CryptoMKT).toBeTruthy();
-    const mkt = new CryptoMKT();
-    const candle = await mkt.getCandle();
-    expect(candle).toBeTruthy();
+    const service = new CryptoMKT({
+      store: new Map(),
+    });
+    const data = await service.start().first().toPromise();
+    expect(data).toBeTruthy();
   });
 });
