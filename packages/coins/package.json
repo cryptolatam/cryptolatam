@@ -1,6 +1,6 @@
 {
   "name": "@cryptolatam/coins",
-  "version": "0.2.0",
+  "version": "1.2.0",
   "description": "",
   "private": false,
   "main": "lib/index.js",
@@ -20,8 +20,8 @@
   "author": "Patricio López <lopezjuripatricio@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
-    "@cryptolatam/error": "^1.0.1",
-    "@cryptolatam/money": "^1.0.1",
+    "@cryptolatam/error": "^1.2.0",
+    "@cryptolatam/money": "^1.2.0",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "millisecond": "^0.1.2",
