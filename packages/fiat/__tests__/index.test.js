@@ -9,7 +9,7 @@ function createService() {
   });
 }
 
-describe("SurBTC", () => {
+describe("FiatService", () => {
   beforeAll(() => {
     dotenv.config();
   });
