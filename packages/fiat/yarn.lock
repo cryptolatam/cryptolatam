@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@cryptolatam/error@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@cryptolatam/error/-/error-0.1.6.tgz#bc98f85ba9d5ac657020d47d07241b6bb31b99d4"
+"@cryptolatam/error@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@cryptolatam/error/-/error-1.0.1.tgz#65781bda1f843fbfc4086bd650f1235cbba822ec"
   dependencies:
     es6-error "^4.0.2"
 
-"@cryptolatam/money@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@cryptolatam/money/-/money-0.1.7.tgz#99c559e08289d68024d000b77f4798213d3c9a05"
+"@cryptolatam/money@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@cryptolatam/money/-/money-1.0.1.tgz#e407115746a0d51fb447964bedd3ea5784983c4f"
   dependencies:
     numeral "^2.0.6"
 
