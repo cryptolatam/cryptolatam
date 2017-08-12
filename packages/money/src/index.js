@@ -2,11 +2,12 @@
 
 import numeral from "numeral";
 
-export function parse(input, currency = "CLP") {
+export function parse(input, currency = "USD") {
   return [numeral(input).value(), currency.toUpperCase()];
 }
 
-export function render(input = []) {
+export function render(input = [], options = {}) {
   const [value, currency] = input;
-  return `${numeral(value).format("0,0")} ${currency.toUpperCase()}`;
+  const format = options || "0,0";
+  return `${numeral(value).format(format)} ${currency.toUpperCase()}`;
 }
