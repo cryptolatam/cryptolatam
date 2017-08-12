@@ -8,6 +8,6 @@ export function parse(input, currency = "USD") {
 
 export function render(input = [], options = {}) {
   const [value, currency] = input;
-  const format = options || "0,0";
+  const format = options.format || "0,0";
   return `${numeral(value).format(format)} ${currency.toUpperCase()}`;
 }
