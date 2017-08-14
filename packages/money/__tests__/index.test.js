@@ -27,3 +27,32 @@ describe("render", () => {
     }).toThrow(CryptoLATAMError);
   });
 });
+
+describe("convert", () => {
+  it("converts coins", () => {
+    const data = {
+      BTC: { rate: [4000, "USD"] },
+      CLP: { rate: [0.0015429718207550128, "USD"] },
+    };
+    const result = money.convert(data, [2700000 * 2, "CLP"], "BTC");
+    expect([Math.floor(result[0]), result[1]]).toEqual([2, "BTC"]); // Round result.
+  });
+
+  it("converts coins not using USD", () => {
+    const data = {
+      BTC: { rate: [2700000, "CLP"] },
+      CLP: { rate: [0.0015429718207550128, "USD"] },
+    };
+    const result = money.convert(data, [2700000 * 2, "CLP"], "BTC");
+    expect(result).toEqual([2, "BTC"]);
+  });
+
+  it("converts coins inverted", () => {
+    const data = {
+      BTC: { rate: [2700000, "CLP"] },
+      CLP: { rate: [3.7037037037037036e-7, "BTC"] },
+    };
+    const result = money.convert(data, [2700000 * 2, "CLP"], "BTC");
+    expect(result).toEqual([2, "BTC"]);
+  });
+});

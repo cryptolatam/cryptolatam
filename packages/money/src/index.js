@@ -50,3 +50,31 @@ export function render(input = null, options = {}) {
     return number;
   }
 }
+
+export function convert(data = {}, from, to) {
+  const [value, code] = from;
+
+  function convertTo(currency) {
+    const [trate, tchange] = data[currency]["rate"];
+    if (code === tchange) {
+      return [value / trate, currency];
+    }
+    const [frate, fchange] = data[code]["rate"];
+    if (currency === fchange) {
+      return [value * trate, currency];
+    }
+
+    if (tchange === fchange) {
+      return [value / trate * frate, currency];
+    }
+
+    // TODO: complete this.
+    throw new CryptoLATAMError(`Could not convert ${code} to ${currency}`, { data, code, currency });
+  }
+
+  if (to.constructor === Array) {
+    return [].concat(to).map(convertTo);
+  } else {
+    return convertTo(to);
+  }
+}
