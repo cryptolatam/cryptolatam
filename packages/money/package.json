@@ -10,7 +10,8 @@
   },
   "scripts": {
     "prebuild": "rimraf lib",
-    "build": "babel src --out-dir lib --source-maps"
+    "build": "babel src --out-dir lib --source-maps",
+    "test": "jest"
   },
   "files": [
     "lib",
@@ -19,12 +20,15 @@
   "author": "Patricio López <lopezjuripatricio@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
+    "@cryptolatam/error": "^1.2.0",
+    "lodash": "^4.17.4",
     "numeral": "^2.0.6"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-preset-env": "^1.6.0",
+    "jest": "^20.0.4",
     "rimraf": "^2.6.1"
   },
   "babel": {
