@@ -30,12 +30,16 @@ describe("render", () => {
 
 describe("convert", () => {
   it("converts coins", () => {
+    let result = null;
     const data = {
       BTC: { rate: [4000, "USD"] },
       CLP: { rate: [0.0015429718207550128, "USD"] },
     };
-    const result = money.convert(data, [2700000 * 2, "CLP"], "BTC");
+    result = money.convert(data, [2700000 * 2, "CLP"], "BTC");
     expect([Math.floor(result[0]), result[1]]).toEqual([2, "BTC"]); // Round result.
+
+    result = money.convert(data, [3 * 1 / 0.0015429718207550128, "CLP"], "USD");
+    expect(result).toEqual([3, "USD"]);
   });
 
   it("converts coins not using USD", () => {

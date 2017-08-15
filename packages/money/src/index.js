@@ -51,25 +51,26 @@ export function render(input = null, options = {}) {
   }
 }
 
-export function convert(data = {}, from, to) {
+export function convertBy(from, to, getRate) {
   const [value, code] = from;
 
   function convertTo(currency) {
-    const [trate, tchange] = data[currency]["rate"];
+    const [frate, fchange] = getRate(code) || [];
+    if (currency === fchange) {
+      return [value * frate, currency];
+    }
+
+    const [trate, tchange] = getRate(currency) || [];
     if (code === tchange) {
       return [value / trate, currency];
     }
-    const [frate, fchange] = data[code]["rate"];
-    if (currency === fchange) {
-      return [value * trate, currency];
-    }
 
-    if (tchange === fchange) {
+    if (tchange && fchange && tchange === fchange) {
       return [value / trate * frate, currency];
     }
 
     // TODO: complete this.
-    throw new CryptoLATAMError(`Could not convert ${code} to ${currency}`, { data, code, currency });
+    throw new CryptoLATAMError(`Could not convert ${code} to ${currency}`, { code, currency });
   }
 
   if (to.constructor === Array) {
@@ -77,4 +78,11 @@ export function convert(data = {}, from, to) {
   } else {
     return convertTo(to);
   }
+}
+
+export function convert(data = {}, from, to) {
+  return convertBy(from, to, code => {
+    const curr = data[code];
+    return curr ? curr.rate : null;
+  });
 }
