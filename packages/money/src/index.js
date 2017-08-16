@@ -74,7 +74,7 @@ export function convertBy(from, to, getRate) {
   }
 
   if (to.constructor === Array) {
-    return [].concat(to).map(convertTo);
+    return to.map(convertTo);
   } else {
     return convertTo(to);
   }
